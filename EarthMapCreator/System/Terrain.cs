@@ -29,11 +29,6 @@ public class Terrain : ModSystem
         int regionX = chunkX / halfChunkSize;
         int regionZ = chunkZ / halfChunkSize;
         
-        if (!EarthWorldGenerator.GeneratingRegions.Exists(it => it.X == regionX && it.Y == regionZ))
-        {
-            //return;
-        }
-
         GenerateTerrain(request, regionX, regionZ);
     }
 

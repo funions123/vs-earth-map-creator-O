@@ -7,7 +7,7 @@
         "onions"
     ],
     "description": "make cool earth maps in vintage story",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "side": "server",
     "dependencies": {
         "game": ""

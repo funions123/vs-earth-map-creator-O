@@ -45,7 +45,7 @@ public class EarthMapPatches : ModSystem
     }
 }
 
-[HarmonyPatchCategory("earthmapcreator")]
+[HarmonyPatchCategory("earthmapcreatoro")]
 internal static class Patches
 {
     private static readonly AccessTools.FieldRef<GenBlockLayers, SimplexNoise> 
