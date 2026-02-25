@@ -80,6 +80,9 @@ public sealed class BuildTask : FrostingTask<BuildContext>
                 Configuration = context.BuildConfiguration
             });
 
+        var publishDir = $"../{BuildContext.ProjectName}/bin/{context.BuildConfiguration}/Mods/mod/publish";
+        if (context.DirectoryExists(publishDir))
+            context.CleanDirectory(publishDir);
 
         context.DotNetPublish($"../{BuildContext.ProjectName}/{BuildContext.ProjectName}.csproj",
             new DotNetPublishSettings
