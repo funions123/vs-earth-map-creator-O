@@ -79,12 +79,18 @@ Usage (in Vintage Story)
    The map is placed so that chunk 0,0 (top-left of the world) aligns with
    the top-left of your PNG images. Map size must be a multiple of 512 blocks.
 
-Limitations/TODO
+Limitations
 -------------------
 - Map generation must be a multiple of 512 blocks.
 - Maximum 256 height.
 - Much more data could be applied to VS (rock strata, ores, hot springs, etc.)
 - Vintage Story map resolutions/padding are hardcoded on the client.
+
+TODO
+-------------------
+- Improve rivers.
+- Large inland lakes look terrible right now.
+- Vanilla structures like spawning inside rivers and under oceans, although this is apparently a vanilla bug.
 
 Data Used/Acknowledgments
 -------------------
