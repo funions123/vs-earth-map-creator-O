@@ -1,0 +1,32 @@
+﻿[
+  {
+    "op": "remove",
+    "path": "/blocklayers/3",
+    "file": "game:worldgen/blocklayers.json",
+    "side": "Server"
+  },
+  {
+    "op": "replace",
+    "path": "/blocklayers/0",
+    "value": {
+      "name": "L1 Soil",
+      "id": "l1soil",
+      "blockCodeByMin": [
+        { "minTemp": -4, "minRain": 0.33, "minFertility": 0.5, "blockCode": "soil-medium-normal" },
+        { "minTemp": -7, "minRain": 0.19, "minFertility": 0.5, "blockCode": "soil-medium-sparse" },
+        { "minTemp": -10, "minRain": 0.12, "minFertility": 0.5, "blockCode": "soil-medium-verysparse" },
+
+        { "minTemp": -4, "minRain": 0.33, "minFertility": 0.25, "blockCode": "soil-low-normal" },
+        { "minTemp": -7, "minRain": 0.2, "minFertility": 0.25, "blockCode": "soil-low-sparse" },
+        { "minTemp": -10, "minRain": 0.19, "minFertility": 0.25, "blockCode": "soil-low-verysparse" },
+
+        { "minTemp": -15, "maxTemp": -15, "maxRain": 0.20, "minRain": 0.15, "maxFertility": 0.25, "blockCode": "gravel-{rocktype}" },
+        { "minTemp": 21, "maxRain": 0.1, "maxFertility": 0.25, "blockCode": "sand-{rocktype}" },
+
+        { "minFertility": 0.25, "maxY": 0.51, "blockCode": "soil-verylow-verysparse" }
+      ]
+    },
+    "file": "game:worldgen/blocklayers.json",
+    "side": "Server"
+  }
+]

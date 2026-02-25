@@ -1,0 +1,97 @@
+vs-earth-map-creator-O
+============================
+Make cool earth maps in Vintage Story (VS)
+
+Original code by tlm9201. Heavily modified and improved, and the bash script image processing pipeline was rewritten in python for windows+linux compat and ease of use.
+Not a fork because its functionally impossible to pull from upstream (due to the extent of rewrite) and the merge conflicts got annoying.
+
+Requirements
+-------------------
+dotnet 8
+vintage story
+python3 (+ pip packages, see Geo/requirements.txt)
+ImageMagick (optional, for river post-processing — falls back to Pillow if absent)
+
+Directories
+-------------------
+.
+├── CakeBuild         - build
+├── EarthMapCreator   - vs code mod
+└── Geo               - geospatial processing scripts
+
+Python Pipeline (Geo/)
+-------------------
+The pipeline downloads some datasets automatically, but several large files must be
+placed manually in Geo/datasets/ before running:
+
+  ds75_grd.zip              GMTED 250m DEM (topography)
+                            https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/topo/downloads/GMTED/Grid_ZipFiles/ds75_grd.zip
+
+  gebco_2025_sub_ice_topo.zip  GEBCO bathymetry (or extract the .nc and place it directly)
+                            https://www.gebco.net/data_and_products/gridded_bathymetry_data/
+
+  ne_10m_rivers_lake_centerlines.zip  Natural Earth rivers
+                            https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+  ne_10m_lakes.zip          Natural Earth lakes
+                            https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+  gm_ve_v1.zip              Global vegetation canopy cover
+                            https://www.earthenv.org/vegetation
+
+The following are downloaded automatically on first run:
+  - OSM land polygons
+  - Köppen-Geiger climate classification
+
+Once datasets are in place:
+
+  0. The python scripts work on Windows or Linux, but you must have python and pip installed.
+
+  1. Install Python dependencies:
+       cd Geo/
+       pip install -r requirements.txt
+
+  2. Edit Geo/config.py to set your bounding box (LAT_MIN/MAX, LON_MIN/MAX),
+     output resolution (FINAL_WIDTH, FINAL_LENGTH — must be multiples of 512),
+     and projection. You can use sites such as https://boundingbox.klokantech.com/
+	 to find a bounding box for the desired map.
+
+  3. Run the pipeline:
+       python launch.py
+
+  4. Output PNGs will be written to Geo/work/build/.
+
+Usage (in Vintage Story)
+-------------------
+1. Copy all PNGs from Geo/work/build/ into your VS data directory:
+     Linux:   ~/.config/VintagestoryData/EarthMap/
+     Windows: %APPDATA%\VintagestoryData\EarthMap\
+
+2. Set MapWidthBlocks and MapHeightBlocks in:
+     ModConfig/EarthMapCreator.json
+   to match the FINAL_WIDTH and FINAL_LENGTH you used in config.py.
+
+3. Install the mod, create a new world, then run:
+     /earthmap generate
+
+   The map is placed so that chunk 0,0 (top-left of the world) aligns with
+   the top-left of your PNG images. Map size must be a multiple of 512 blocks.
+
+Limitations/TODO
+-------------------
+- Map generation must be a multiple of 512 blocks.
+- Maximum 256 height.
+- Much more data could be applied to VS (rock strata, ores, hot springs, etc.)
+- Vintage Story map resolutions/padding are hardcoded on the client.
+
+Data Used/Acknowledgments
+-------------------
+- GMTED 250m DEM: https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/topo/downloads/GMTED/Grid_ZipFiles/ds75_grd.zip
+- OpenStreetMap: https://www.openstreetmap.org/copyright
+- Natural Earth: https://www.naturalearthdata.com/
+- WorldClim: https://www.worldclim.org/data/worldclim21.html
+- Reverse engineered existing Minecraft map programs, EarthTiles, earthtomc, worldpainter
+
+License 
+-------------------
+vs-earth-map-creator is licensed under MIT - see ./LICENSE
