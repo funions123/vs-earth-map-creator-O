@@ -73,10 +73,12 @@ Usage (in Vintage Story)
      ModConfig/EarthMapCreator.json
    to match the FINAL_WIDTH and FINAL_LENGTH you used in config.py.
 
-3. Install the mod, create a new world, and the mod should begin generating chunks based on the earth map data.
+3. Install the mod, create a new world (ideally with the same dimensions as your generated map images), and the mod should begin generating chunks based on the earth map data.
 
    The map is placed so that chunk 0,0 (top-left of the world) aligns with
    the top-left of your PNG images. Map size must be a multiple of 512 blocks.
+   If you create a world that is larger than the generated images, you may spawn in the void since the entire area outside the valid image data zone is simply not generated.
+   Vintage story spawns you in the center of the total map dimensions and maps in-game coordinates to that center.
 
 Limitations
 -------------------
