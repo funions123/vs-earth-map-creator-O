@@ -5,6 +5,8 @@ Make cool earth maps in Vintage Story (VS)
 Original code by tlm9201. Heavily modified and improved, and the bash script image processing pipeline was rewritten in python for windows+linux compat and ease of use.
 Not a fork because its functionally impossible to pull from upstream (due to the extent of rewrite) and the merge conflicts got annoying.
 
+https://github.com/tlm9201/vs-earth-map-creator
+
 Requirements
 -------------------
 dotnet 8
