@@ -73,8 +73,7 @@ Usage (in Vintage Story)
      ModConfig/EarthMapCreator.json
    to match the FINAL_WIDTH and FINAL_LENGTH you used in config.py.
 
-3. Install the mod, create a new world, then run:
-     /earthmap generate
+3. Install the mod, create a new world, and the mod should begin generating chunks based on the earth map data.
 
    The map is placed so that chunk 0,0 (top-left of the world) aligns with
    the top-left of your PNG images. Map size must be a multiple of 512 blocks.
